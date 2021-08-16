@@ -20,7 +20,7 @@
             {% csrf_token%}
             {% bootstrap_form form %}
 
-
+            <a href="{% url 'accounts:resetar_senha'%}" class="nav-link"><small>Esqueceu sua senha </small></a>
             <button type="submit" class="btn btn-primary">Login</button>
             </form>
 

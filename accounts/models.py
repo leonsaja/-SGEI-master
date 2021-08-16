@@ -46,7 +46,6 @@ class User(AbstractBaseUser,PermissionsMixin):
     foto = models.ImageField(blank=True, upload_to='user_foto', verbose_name='Foto', null='True')
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'nome', 'cpf', 'data_nascimento']
 

@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container">
+    <div class="card-success">
+        <div class="card-header">
+            <div class="card-title">
+                Listar de Usuários
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Data Nascimento</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%for usuario in usuarios %}
+                    <tr>
+                        <td>{{usuario.nome}}</td>
+                        <td>{{usuario.email}}</td>
+                        <td>{{usuario.telefone}}</td>
+                        <td>{{usuario.data_nascimento}}</td>
+                    </tr>
+                    {%endfor%}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
