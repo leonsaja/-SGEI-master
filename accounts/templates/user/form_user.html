@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+{% load bootstrap4 %}
+{%block title%}
+     {% if request.resolver_match.url_name == 'criar_usuario' %}
+        Cadastro de Usuário
+    {%else%}
+        Editar Usuário
+    {%endif%}
+
+{%endblock title%}
+{%block content%}
+<!--<div class="row">-->
+<!--  <div class="col-md-6 offset-md-3">-->
+<div class="card-success">
+    <div class="card-header">
+        <div class="card-title">
+             {% if request.resolver_match.url_name == 'criar_usuario' %}
+                Cadastro de Usuário
+            {%else%}
+                Editar Usuário
+            {%endif%}
+           </div>
+    </div>
+        <div class="card-body">
+
+        <form method="POST">
+            {% csrf_token%}
+            {% bootstrap_form form %}
+
+             {% for error in form.non_field_errors %}
+                        {{error}}
+            {% endfor %}
+
+            <button type="submit"class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+
+<!--</div>-->
+  </div>
+<!--</div>-->
+{%endblock content%}
