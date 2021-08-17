@@ -45,9 +45,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #pacote
+    'social_django',
     'adminlte3',
-    'bootstrap4',
     'cpf_field',
+    'bootstrap4',
+
 
 ]
 
@@ -59,6 +61,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
+
 ]
 
 ROOT_URLCONF = 'SGEI.urls'
@@ -74,10 +78,14 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
+
             ],
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'SGEI.wsgi.application'
 
@@ -111,7 +119,24 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.google.GoogleOAuth2',
+)
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    'social_core.pipeline.user.create_user',
+    'accounts.pipelines.save_profile',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+    'social_core.pipeline.social_auth.associate_by_email',
+)
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '971917329579-a6la744ke5lip1clpsdj7gppq7qm40pa.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET='SUCBlldeh96-kJg5rE2gxhI2'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -146,6 +171,7 @@ LOGIN_URL = 'accounts:login'
 LOGIN_REDIRECT_URL = 'accounts:criar_usuario'
 LOGOUT_REDIRECT_URL = 'accounts:login'
 
+SOCIAL_AUTH_LOGIN_REDIRECT_URL= 'accounts:atualizar_perfil'
 MESSAGE_TAGS = {
 
     constants.ERROR: 'alert-danger',
@@ -160,4 +186,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'leonardosaja87@gmail.com'
-EMAIL_HOST_PASSWORD = 'ggbqkmbaujxajtmu'
+EMAIL_HOST_PASSWORD = 'wdromtabzvdoxlos'

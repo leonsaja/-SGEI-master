@@ -1,5 +1,7 @@
 {% extends 'adminlte/login.html' %}
 {%load bootstrap4 %}
+
+
 {% block logo %}
 <div class="login-logo">
     {# Mirrors block names used in _main_header.html #}
@@ -23,7 +25,7 @@
             <a href="{% url 'accounts:resetar_senha'%}" class="nav-link"><small>Esqueceu sua senha </small></a>
             <button type="submit" class="btn btn-primary">Login</button>
             </form>
-
+            <a href="{% url 'social:begin' 'google-oauth2' %}">Logar Google</a>
         </div>
 
 </div>

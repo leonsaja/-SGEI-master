@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from accounts.forms import form_user
 from django.contrib.auth import get_user_model
-
+from accounts.forms.perfil_form import PerfilForm
 def criar_usuario(request):
 
     if request.method == 'POST':
@@ -34,3 +34,16 @@ def listar_usuarios(request):
     User=get_user_model()
     usuarios=User.objects.filter(is_staff=True)
     return render(request,'user/listar_usuarios.html',{'usuarios':usuarios})
+
+def perfil_user(request):
+
+    if request.method == 'POST':
+        form=PerfilForm(data=request.POST,instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            return redirect('accounts:criar_usuario')
+    else:
+        form = PerfilForm(instance=request.user)
+
+    return  render(request,'user/perfil_user.html',{'form':form})

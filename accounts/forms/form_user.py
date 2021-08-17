@@ -13,9 +13,10 @@ class EditarUserForm(UserChangeForm):
 
     password = None
     cpf=None
+
     class Meta:
         model = get_user_model()
-        fields = ['username','nome','email','data_nascimento','telefone']
+        fields = ['nome','email','data_nascimento','telefone']
 
 
 

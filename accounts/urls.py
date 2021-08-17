@@ -6,10 +6,11 @@ from .forms.form_user import LoginForm
 app_name='accounts'
 
 urlpatterns = [
-    path('criar/',user_views.criar_usuario,  name='criar_usuario'),
+    path('criar_usuario/',user_views.criar_usuario,  name='criar_usuario'),
     path('criar_usuario_admin/', admin_views.criar_usuario_admin, name='criar_usuario_admin'),
+    path('atualizar_perfil/', user_views.perfil_user, name='atualizar_perfil'),
     path('editar/<int:id>', user_views.editar_usuario, name='editar_usuario'),
-    path('listar', user_views.listar_usuarios, name='listar_usuarios'),
+    path('listar/', user_views.listar_usuarios, name='listar_usuarios'),
     path('login/', auth_views.LoginView.as_view(form_class=LoginForm), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
