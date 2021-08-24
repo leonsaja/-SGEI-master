@@ -1,19 +1,23 @@
 from django.urls import path, reverse_lazy
 from django.contrib.auth import views as auth_views
-from accounts.views import user_view as user_views,user_admin_view as admin_views
-from .forms.form_user import LoginForm
+from accounts.views.usuario import user_view
+from accounts.views.admin import user_admin_view
+from accounts.forms.usuario.form_user import LoginForm
 
 app_name='accounts'
 
 urlpatterns = [
-    path('criar_usuario/',user_views.criar_usuario,  name='criar_usuario'),
-    path('criar_usuario_admin/', admin_views.criar_usuario_admin, name='criar_usuario_admin'),
-    path('atualizar_perfil/', user_views.perfil_user, name='atualizar_perfil'),
-    path('editar/<int:id>', user_views.editar_usuario, name='editar_usuario'),
-    path('listar/', user_views.listar_usuarios, name='listar_usuarios'),
+
+    #admininstrador
+    path('criar_usuario_admin/', user_admin_view.CriarUsuarioAdminView.as_view(), name='criar_usuario_admin'),
+    path('listar/', user_admin_view.ListarUsuariosView.as_view(), name='listar_usuarios'),
+
+    #usuario
+    path('criar_usuario/', user_view.CriarUsuarioView.as_view(), name='criar_usuario'),
+    path('atualizar_perfil/', user_view.perfil_user, name='atualizar_perfil'),
+    path('editar/<int:pk>', user_view.EditarUsuarioView.as_view(), name='editar_usuario'),
     path('login/', auth_views.LoginView.as_view(form_class=LoginForm), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-
 
     #redefinir a senha
     path('alterar_senha', auth_views.PasswordChangeView.as_view(success_url=reverse_lazy('core:index')), name='alterar_senha'),

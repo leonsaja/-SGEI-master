@@ -1,0 +1,26 @@
+
+
+{% extends 'base.html'%}
+{%block content%}
+
+<div class="card-success">
+
+    <div class="card-header">
+        <div class="card-title">
+            Notificação
+        </div>
+
+    </div>
+    <div class="card-body">
+            <form method="post">{% csrf_token %}
+                <p>Deseja realmente excluir o "{{ object }}"?</p>
+                <button type="submit" class="btn btn-danger">Confirmar</button>
+            </form>
+        </div>
+</div>
+
+</body>
+</html>
+
+
+{%endblock content%}

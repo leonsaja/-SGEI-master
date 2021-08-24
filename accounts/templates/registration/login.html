@@ -12,7 +12,7 @@
 {% endblock login_errors %}
 {% block login_form %}
 
-<div class="card-primary">
+<div class="card-success">
     <div class="card-header">
         <div class="card-title">Login</div>
     </div>
@@ -22,10 +22,10 @@
             {% csrf_token%}
             {% bootstrap_form form %}
 
-            <a href="{% url 'accounts:resetar_senha'%}" class="nav-link"><small>Esqueceu sua senha </small></a>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <a href="{% url 'accounts:resetar_senha'%}" class="nav-link text-center"><p class="text-success">Esqueci minha senha ? clique aqui </p></a>
+            <button type="submit" class="btn btn-success btn-lg btn-block">Entrar</button>
             </form>
-            <a href="{% url 'social:begin' 'google-oauth2' %}">Logar Google</a>
+            <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-outline-success mt-2 btn-lg btn-block"><i class="fab fa-google-plus-g""></i>Google</a>
         </div>
 
 </div>

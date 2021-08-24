@@ -2,6 +2,11 @@
 
 {% block content %}
 <div class="container">
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <a href="{% url 'accounts:criar_usuario_admin'%}" class="btn btn-primary mb-2">Adicionar</a>
+        </div>
+    </div>
     <div class="card-success">
         <div class="card-header">
             <div class="card-title">
@@ -10,7 +15,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th>Nome</th>
@@ -28,18 +33,14 @@
                         <td>{{usuario.email}}</td>
                         <td>{{usuario.telefone}}</td>
                         <td>{{usuario.data_nascimento}}</td>
-                        <td><a href="{% url 'accounts:editar_usuario' usuario.id %}" class="btn btn-warning m-2">Editar</a>
-                            <a href="#" class="btn btn-danger">Remover</a>
-                        </td>
+                            <td><a href="{% url 'accounts:editar_usuario' usuario.id %}" class="text-warning m-2"> <i class="fa fa-edit"></i></a>
+                                <a href="#" class="text-danger ml-2"><i class="fa  fa-times "></i></a></td>
                         </tr>
                     {%endfor%}
                     </tbody>
                 </table>
-                <div>
-                    <h6><a href="{% url 'accounts:criar_usuario_admin' %}" class="btn btn-primary">Cadastrar</a></h6>
-                </div>
-
             </div>
+              {%include 'includes/pagination.html'%}
         </div>
     </div>
 </div>
