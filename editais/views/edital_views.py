@@ -45,7 +45,7 @@ class RemoverEditalView(LoginRequiredMixin,SuccessMessageMixin,DeleteView):
 
 class DetalheEditalView(LoginRequiredMixin,SuccessMessageMixin,DetailView):
     model = Edital
-    template_name = 'edital/edital_detalhe.html'
+    template_name = 'edital/edital_detail.html'
 
     def get_context_data(self, **kwargs):
         context=super(DetalheEditalView, self).get_context_data(**kwargs)

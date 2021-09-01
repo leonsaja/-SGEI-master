@@ -1,8 +1,7 @@
 from django.urls import path, reverse_lazy
 from django.contrib.auth import views as auth_views
-from accounts.views.usuario import user_view
-from accounts.views.admin import user_admin_view
-from accounts.forms.usuario.form_user import LoginForm
+from accounts.views import user_admin_view, user_view
+from accounts.forms.form_user import LoginForm
 
 app_name='accounts'
 

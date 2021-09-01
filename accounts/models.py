@@ -42,7 +42,7 @@ class User(AbstractBaseUser,PermissionsMixin):
     email = models.EmailField('E-mail',unique=True, null=False, blank=False)
     cpf = CPFField('CPF',max_length=11,unique=True,null=True,blank=False)
     telefone = models.CharField('Telefone',max_length=14, blank=False, null=False)
-    data_nascimento = models.DateField('Data nascimento',blank=False, null=True)
+    data_nascimento = models.DateField('Data de Nascimento',blank=False, null=True)
     foto = models.ImageField(blank=True, upload_to='user_foto', verbose_name='Foto', null=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
