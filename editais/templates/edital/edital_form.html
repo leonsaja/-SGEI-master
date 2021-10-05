@@ -1,37 +1,29 @@
-{% extends 'base.html'%}
-{% load bootstrap4 %}
-{%block title %}
-{% if request.resolver_match.url_name == 'criar_edital' %}
+{% extends 'base.html'%} {% load bootstrap4 %} {%block title %} 
+{% if request.resolver_match.url_name == 'criar_edital' %} 
 Cadastro de Edital
-{%else%}
-Editar Edital
-{%endif%}
-{%endblock title %}
+{%else%} 
+Editar Edital 
+{%endif%} 
+{%endblock title %} 
+
 {% block content %}
 <div class="container">
-<div class="card-success">
-    <div class="card-header">
-        <h5 class="card-title title">
-      
-            {% if request.resolver_match.url_name == 'criar_edital' %}
-            Cadastro de Edital
-            {%else%}
-            Editar Edital
-            {%endif%}
-     
-        </h5>
-    </div>
-    <div class="card-body">
-        <form  method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            <a href="{% url 'editais:listar_editais'%}" class="btn btn-warning">Voltar</a>
-            <button type="submit" class="btn btn-success">Salvar</button>
-           
-        </form>
-
-    </div>
-
-</div>
+	<div class="card-success">
+		<div class="card-header">
+			<div class="card-title title">
+				{% if request.resolver_match.url_name == 'criar_edital' %} Cadastro de
+				Edital {%else%} Editar Edital {%endif%}
+			</div>
+		</div>
+		<div class="card-body">
+			<form method="post" enctype="multipart/form-data">
+				{% csrf_token %} {% bootstrap_form form %}
+				<a href="{% url 'editais:listar_editais'%}" class="btn btn-warning"
+					>Voltar</a
+				>
+				<button type="submit" class="btn btn-success">Salvar</button>
+			</form>
+		</div>
+	</div>
 </div>
 {% endblock content %}

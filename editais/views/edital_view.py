@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView,ListView,DeleteView,DetailView
 from editais.forms import form_edital
@@ -43,14 +44,29 @@ class RemoverEditalView(LoginRequiredMixin,SuccessMessageMixin,DeleteView):
     success_url = reverse_lazy('edital:listar_editais')
     success_message = 'Edital excluído com sucesso'
 
-class DetalheEditalView(LoginRequiredMixin,SuccessMessageMixin,DetailView):
-    model = Edital
-    template_name = 'edital/edital_detail.html'
 
-    def get_context_data(self, **kwargs):
-        context=super(DetalheEditalView, self).get_context_data(**kwargs)
-        context['edital'] =Edital.objects.get(pk=self.kwargs['pk'])
-        return context
+
+def edital_view_adm(request, id):
+    context = {}
+    edital = get_object_or_404(Edital, pk=id)
+    print('teste')
+    perguntas = edital.pergunta_set.all()
+    context['edital'] = edital
+    context['perguntas'] = perguntas
+    return render(request, 'edital/edital_detail.html', context)
+
+
+# class DetalheEditalView(LoginRequiredMixin, SuccessMessageMixin, DetailView):
+#     model = Edital
+#     template_name = 'edital/edital_detail.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context=super(DetalheEditalView, self).get_context_data(**kwargs)
+#         context['edital'] =Edital.objects.get(pk=self.kwargs['pk'])
+#         context['perguntas']=context['edital'].pergunta_set.all()
+#
+#         return context
+
 
 
 

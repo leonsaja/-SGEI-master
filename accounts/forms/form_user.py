@@ -10,14 +10,12 @@ class LoginForm(AuthenticationForm):
         fields = ['username','password']
 
 class EditarUserForm(UserChangeForm):
-
     password = None
     cpf=None
 
     class Meta:
         model = get_user_model()
         fields = ['nome','email','data_nascimento','telefone']
-
 
 
 class CadastrarUserForm(UserCreationForm):

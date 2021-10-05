@@ -14,7 +14,6 @@ class CadastrarUserAdminForm(UserCreationForm):
     def clean_telefone(self):
         data = self.cleaned_data['telefone']
         telefone = data.replace("(", "").replace(")", "").replace("-", "")
-
         return telefone
 
     def clean_cpf(self):

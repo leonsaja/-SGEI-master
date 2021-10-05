@@ -1,54 +1,69 @@
-.img-profile.card-img{
-   height: initial;
-   width: 100%;
-   height: initial;
-    aspect-ratio: 1;
 
+body{
+	font-family: 'Roboto', sans-serif !important;
+	font-size: 100px;
+	font-weight: bold;
+	color: red !important;
+}
+
+.img-profile.card-img {
+	height: initial;
+	width: 100%;
+	height: initial;
+	aspect-ratio: 1;
 }
 .navbar.bar {
-    background-color: transparent !important;
-    box-shadow: none !important;
+	background-color: transparent !important;
+	box-shadow: none !important;
 }
 
-.title{
-    font-size: 18px;
-    font-weight: bold;
+.title {
+	font-size: 18px;
+	font-weight: bold;
 
 }
+
+.card-title{
+	font-size: 18px;
+	font-weight: bold;
+	border-bottom: 2px solid green;
+}
+
+.card-body.espacamento {
+	padding: 30px;
+}
+
+/* .card-success > .card-header{
+    background-color: red;
+} */
 
 /*  sidebar  menu lateral  */
 
 .menu {
-    background-color: #066017;
-
+	background-color: #066017;
 }
 /*  rodape da pagina */
-.sticky-footer.rodape{
-      background-color:transparent;
+.sticky-footer.rodape {
+	background-color: transparent;
 }
 /* collapse botão */
-.card-header.coll{
-background-color: #066017;
-color:white;
-
+.card-header.coll {
+	background-color: #066017;
+	color: white;
 }
 /* bar admin-django  */
-.main-sidebar.bar{
-    background-color: #066017 !important;
+.main-sidebar.bar {
+	background-color: #066017 !important;
 }
 
 /* body*/
-body{
-
-    color: black !important;
+body {
+	color: black !important;
 }
-th{
-    color: black !important;
-}
-
-table{
-      color: black !important;
-
+th {
+	color: black !important;
 }
 
-
+table {
+	color: black !important;
+}

@@ -47,7 +47,7 @@ class Pergunta(models.Model):
 
 class Alternativa(models.Model):
 
-    pergunta = models.ForeignKey(Pergunta, on_delete=models.CASCADE)
+    pergunta = models.ForeignKey(Pergunta, on_delete=models.CASCADE, related_name='busca_alternativa')
     descricao = models.TextField()
     peso = models.IntegerField(default=0)
     # ---- Campos para controle de datas de criação e edição ----

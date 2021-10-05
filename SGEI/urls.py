@@ -22,7 +22,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls', namespace='accounts')),
-    path('editais/',include('editais.urls',namespace='edital')),
+    path('edital/',include('editais.urls',namespace='edital')),
     path('oauth/', include('social_django.urls', namespace='social')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\
       + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
